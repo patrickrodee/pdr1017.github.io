@@ -1,0 +1,104 @@
+body {
+	font-family: "Roboto";
+	margin: 0;
+	background-color: #326395;
+}
+
+#wrapper {
+	margin-left: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+#container {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+#title h1 {
+	text-align: left;
+	margin: 0 0 0 0;
+}
+
+#title {
+	margin: 1em 0 0 0;
+}
+
+#about_the_sim {
+	text-align: left;
+	background-color: #326395;
+	padding: 0 0 0 0;
+}
+
+#to_flip {
+	-moz-transform: scale(-1, 1);
+	-webkit-transform: scale(-1, 1);
+	-o-transform: scale(-1, 1);
+	-ms-transform: scale(-1, 1);
+	transform: scale(-1, 1);
+}
+
+.span_1_of_9 {
+	background-color: #5282B5;
+}
+
+.fa-long-arrow-right {
+	padding-left: 1em;
+}
+
+.fa-long-arrow-left {
+	padding-right: 1em;
+}
+
+.iz_button:hover {
+	color: #AABBDD;
+	cursor: pointer;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0 0 0 0;
+}
+
+li {
+	float: left;
+	padding-right: 3em;
+}
+li h3 {
+	display: block;
+}
+
+h1 {
+	font-weight: 100;
+	font-size: 3em;
+	color: #FFFFFF;
+}
+
+h3 {
+	text-align: left;
+	font-weight: 100;
+	font-size: 2em;
+	color: #FFFFFF;
+	max-width: 100%;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+p {
+	font-weight: 100;
+	font-size: 1em;
+	color: #FFFFFF;
+	margin: 0 0 0 0;
+	background-color: #326395;
+	padding: 3% 3% 3% 3%;
+}
+
+.team_holder {
+	display: none;
+}
+
+.top_4 {
+	color: #FFFFFF;
+	font-weight: 100;
+	text-decoration: underline;
+}
