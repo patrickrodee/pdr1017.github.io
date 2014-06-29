@@ -1,6 +1,8 @@
 var more_info_active = false;
 var sim_has_run = false;
 
+var random1;
+
 $("#more_info").click(function() {
 	if (more_info_active) {
 		$("#about_the_sim").text("");
