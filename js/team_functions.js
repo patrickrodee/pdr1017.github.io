@@ -165,20 +165,26 @@ function findWinner(team1, team2) {
 	var team2DefRating = rounding((team2Def*.4 + team2Goa*.1)*100);
 	// Comparison
 	var team1Wins = 0;
+	var team1Points = 0;
 	var team2Wins = 0;
+	var team2Points = 0;
 	for (var i = 0; i < 10000; i++) {
-		if ((team1OffRating/randomness(1,4) - team2DefRating/randomness(1,4)) > (team2OffRating/randomness(1,4) - team1DefRating/randomness(1,4))) {
+		var team1Score = (team1OffRating/randomness(1,4) - team2DefRating/randomness(1,4));
+		var team2Score = (team2OffRating/randomness(1,4) - team1DefRating/randomness(1,4));
+		if (team1Score > team2Score) {
 			team1Wins++;
+			team1Points += team1Score;
 		}
 		else {
 			team2Wins++;
+			team2Points += team2Score;
 		}
 	};
 	if (team1Wins > team2Wins) {
-		return [team1,team2];
+		return [team1,team2,team1Points,team2Points];
 	}
 	else {
-		return [team2,team1];
+		return [team2,team1,team2Points,team1Points];
 	}
 }
 

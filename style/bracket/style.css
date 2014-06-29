@@ -38,8 +38,13 @@ body {
 	transform: scale(-1, 1);
 }
 
-.span_1_of_9 {
-	background-color: #5282B5;
+.ui-tooltip {
+	background-color: #FFFFFF;
+	border: none;
+	color: #326395;
+	font-family: "Roboto";
+	font-weight: 400;
+	font-size: 1em;
 }
 
 .fa-long-arrow-right {
@@ -97,8 +102,31 @@ p {
 	display: none;
 }
 
+.match_titles p {
+	background-color: #FFFFFF;
+	color: #124375;
+	font-weight: 400;
+	border-radius: 15px;
+}
+
 .top_4 {
 	color: #FFFFFF;
 	font-weight: 100;
-	text-decoration: underline;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.to_float {
+	float: left;
+}
+
+.to_900 {
+	font-weight: 900;
+	color: #FFFFFF;
+	visibility: hidden;
+}
+
+#world_cup_1st, #world_cup_2nd, #world_cup_3rd, #world_cup_4th {
+	color: #FFFFFF;
+	font-weight: 100;
 }

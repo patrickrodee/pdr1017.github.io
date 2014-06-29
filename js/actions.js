@@ -12,6 +12,14 @@ $("#more_info").click(function() {
 	}
 });
 
+$(function () {
+      $(document).tooltip({
+          content: function () {
+              return $(this).prop('title');
+          }
+      });
+  });
+
 function abbreviate(name) {
 	if (name == "Brazil"){return "BRA"}
 	else if (name == "Chile"){return "CHI"}
@@ -50,6 +58,20 @@ function countryCode(name) {
 	else if (name =="USA"){return "us"}
 };
 
+function updateTooltip(match_number, team1_name, team1_score, team2_name, team2_score) {
+	var match_to_update = "#match_" + match_number.toString();
+	if (team1_score > team2_score) {
+		var winning_team = team1_name;
+		var winner_ratio = rounding(team1_score/(team1_score+team2_score))*100;
+	}
+	else {
+		var winning_team = team2_name;
+		var winner_ratio = rounding(team2_score/(team1_score+team2_score))*100;
+	}
+	var tooltip_text = winning_team + " wins, " + winner_ratio.toFixed(0) + "%";
+	$(match_to_update).attr('title',tooltip_text);
+}
+
 function updateNextMatch(match_number, team1, team2) {
 	var match_to_update = "#match_" + match_number.toString();
 	var first_to_update = "#first_" + match_number.toString();
@@ -76,7 +98,9 @@ $("#run_sim").click(function() {
 			//console.log(match1_to_sim + ": " + $(match1_to_sim).children("#team1").text() + " vs " + $(match1_to_sim).children("#team2").text());
 			//console.log(match2_to_sim + ": " + $(match2_to_sim).children("#team1").text() + " vs " + $(match2_to_sim).children("#team2").text());
 			var outcome1 = findWinner($(match1_to_sim).children("#team1").text(), $(match1_to_sim).children("#team2").text());
+			updateTooltip(i-1,outcome1[0],outcome1[2],outcome1[1],outcome1[3]);
 			var outcome2 = findWinner($(match2_to_sim).children("#team1").text(), $(match2_to_sim).children("#team2").text());
+			updateTooltip(i,outcome2[0],outcome2[2],outcome2[1],outcome2[3]);
 			var winner1 = outcome1[0];
 			var winner2 = outcome2[0];
 			var loser1 = outcome1[1];
@@ -89,23 +113,32 @@ $("#run_sim").click(function() {
 		//Match 61
 		var team1_for_61 = findWinner($("#match_57").children("#team1").text(), $("#match_57").children("#team2").text());
 		var team2_for_61 = findWinner($("#match_58").children("#team1").text(), $("#match_58").children("#team2").text());
+		updateTooltip(57,team1_for_61[0],team1_for_61[2],team1_for_61[1],team1_for_61[3]);
+		updateTooltip(58,team2_for_61[0],team2_for_61[2],team2_for_61[1],team2_for_61[3]);
 		updateNextMatch(61, team1_for_61[0], team2_for_61[0]);
 		//Match 62
 		var team1_for_62 = findWinner($("#match_59").children("#team1").text(), $("#match_59").children("#team2").text());
 		var team2_for_62 = findWinner($("#match_60").children("#team1").text(), $("#match_60").children("#team2").text());
+		updateTooltip(59,team1_for_62[0],team1_for_62[2],team1_for_62[1],team1_for_62[3]);
+		updateTooltip(60,team2_for_62[0],team2_for_62[2],team2_for_62[1],team2_for_62[3]);
 		updateNextMatch(62, team1_for_62[0], team2_for_62[0]);
 		//Match 64
 		var team1_for_64 = findWinner($("#match_61").children("#team1").text(), $("#match_61").children("#team2").text());
 		var team2_for_64 = findWinner($("#match_62").children("#team1").text(), $("#match_62").children("#team2").text());
+		updateTooltip(61,team1_for_64[0],team1_for_64[2],team1_for_64[1],team1_for_64[3]);
+		updateTooltip(62,team2_for_64[0],team2_for_64[2],team2_for_64[1],team2_for_64[3]);
 		updateNextMatch(64, team1_for_64[0], team2_for_64[0]);
 		updateNextMatch(63, team1_for_64[1], team2_for_64[1]);
 		//Match 63
 		var first_and_second = findWinner($("#match_64").children("#team1").text(), $("#match_64").children("#team2").text());
 		var third_and_fourth = findWinner($("#match_63").children("#team1").text(), $("#match_63").children("#team2").text());
-		$("#world_cup_1st").text("Winner: " + first_and_second[0]);
-		$("#world_cup_2nd").text("Second: " + first_and_second[1]);
-		$("#world_cup_3rd").text("Third: " + third_and_fourth[0]);
-		$("#world_cup_4th").text("Fourth: " + third_and_fourth[1]);
+		updateTooltip(64,first_and_second[0],first_and_second[2],first_and_second[1],first_and_second[3]);
+		updateTooltip(63,third_and_fourth[0],third_and_fourth[2],third_and_fourth[1],third_and_fourth[3]);
+		$(".to_900").css("visibility", "visible");
+		$("#world_cup_1st").text(first_and_second[0]);
+		$("#world_cup_2nd").text(first_and_second[1]);
+		$("#world_cup_3rd").text(third_and_fourth[0]);
+		$("#world_cup_4th").text(third_and_fourth[1]);
 	};
 	return;
 });
