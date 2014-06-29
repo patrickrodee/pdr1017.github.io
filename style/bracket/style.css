@@ -124,6 +124,7 @@ p {
 	font-weight: 900;
 	color: #FFFFFF;
 	visibility: hidden;
+	padding-right: 1em;
 }
 
 #world_cup_1st, #world_cup_2nd, #world_cup_3rd, #world_cup_4th {
