@@ -70,7 +70,7 @@ function updateTooltip(match_number, team1_name, team1_score, team2_name, team2_
 		var winning_team = team2_name;
 		var winner_ratio = rounding(team2_score/(team1_score+team2_score))*100;
 	}
-	var tooltip_text = winning_team + " wins, " + winner_ratio.toFixed(0) + "%";
+	var tooltip_text = winning_team + " wins with " + winner_ratio.toFixed(0) + "% confidence";
 	$(match_to_update).attr('title',tooltip_text);
 }
 
@@ -138,9 +138,13 @@ $("#run_sim").click(function() {
 		updateTooltip(63,third_and_fourth[0],third_and_fourth[2],third_and_fourth[1],third_and_fourth[3]);
 		$(".to_900").css("visibility", "visible");
 		$("#world_cup_1st").text(first_and_second[0]);
+		$("#world_cup_1st_flag").addClass("flag-icon-" + countryCode(first_and_second[0]));
 		$("#world_cup_2nd").text(first_and_second[1]);
+		$("#world_cup_2nd_flag").addClass("flag-icon-" + countryCode(first_and_second[1]));
 		$("#world_cup_3rd").text(third_and_fourth[0]);
+		$("#world_cup_3rd_flag").addClass("flag-icon-" + countryCode(third_and_fourth[0]));
 		$("#world_cup_4th").text(third_and_fourth[1]);
+		$("#world_cup_4th_flag").addClass("flag-icon-" + countryCode(third_and_fourth[1]));
 	};
 	return;
 });

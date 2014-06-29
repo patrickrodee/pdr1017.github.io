@@ -116,15 +116,22 @@ p {
 	padding-bottom: 0;
 }
 
-.to_float {
+.to_float_L {
 	float: left;
+}
+.to_float_R{
+	float: right;
+}
+
+.flag-icon {
+	margin-top: 3px;
+	padding-left: 6px;
 }
 
 .to_900 {
 	font-weight: 900;
 	color: #FFFFFF;
 	visibility: hidden;
-	padding-right: 1em;
 }
 
 #world_cup_1st, #world_cup_2nd, #world_cup_3rd, #world_cup_4th {
