@@ -25,7 +25,7 @@ $("#about").click(function() {
 });
 
 $(function () {
-      $(document).tooltip({
+      $(".match_button").tooltip({
           content: function () {
               return $(this).prop('title');
           }

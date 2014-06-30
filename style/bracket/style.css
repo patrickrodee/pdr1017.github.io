@@ -30,14 +30,6 @@ body {
 	padding: 0 0 0 0;
 }
 
-#to_flip {
-	-moz-transform: scale(-1, 1);
-	-webkit-transform: scale(-1, 1);
-	-o-transform: scale(-1, 1);
-	-ms-transform: scale(-1, 1);
-	transform: scale(-1, 1);
-}
-
 .ui-tooltip {
 	background-color: #FFFFFF;
 	border: none;
@@ -47,16 +39,8 @@ body {
 	font-size: 1em;
 }
 
-.fa-long-arrow-right {
-	padding-left: 1em;
-}
-
-.fa-long-arrow-left {
-	padding-right: 1em;
-}
-
 .iz_button:hover {
-	color: #AABBDD;
+	color: #BBCCEE;
 	cursor: pointer;
 }
 
@@ -65,11 +49,9 @@ ul {
 	padding: 0 0 0 0;
 }
 
-li {
+ul li {
 	float: left;
 	padding-right: 3em;
-}
-li {
 	display: block;
 }
 
