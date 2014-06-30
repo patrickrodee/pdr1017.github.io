@@ -123,7 +123,10 @@ p {
 	float: right;
 }
 
-.flag-icon {
+#world_cup_1st_flag,
+#world_cup_2nd_flag,
+#world_cup_3rd_flag,
+#world_cup_4th_flag {
 	margin-top: 3px;
 	padding-left: 6px;
 }
