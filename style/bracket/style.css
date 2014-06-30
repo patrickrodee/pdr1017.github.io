@@ -24,7 +24,7 @@ body {
 	margin: 1em 0 0 0;
 }
 
-#about_the_sim {
+#info_section {
 	text-align: left;
 	background-color: #326395;
 	padding: 0 0 0 0;
@@ -69,7 +69,7 @@ li {
 	float: left;
 	padding-right: 3em;
 }
-li h3 {
+li {
 	display: block;
 }
 
@@ -100,6 +100,10 @@ p {
 
 .team_holder {
 	display: none;
+}
+
+.fb-share-button {
+	margin-top: .8em;
 }
 
 .match_titles p {
