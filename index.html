@@ -1,371 +1,1210 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
 	<meta charset="utf-8">
+	<title>FIFA World Cup 2014</title>
+	<script src="./html5_scripts/zingchart-html5-min.js"></script>
+	<link href="http://fonts.googleapis.com/css?family=Raleway:200,500,900" rel="stylesheet" type="text/css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-	<link href='http://fonts.googleapis.com/css?family=Roboto:100,400' rel='stylesheet' type='text/css'>
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="./style/bracket/style.css">
-	<link rel="stylesheet" type="text/css" href="./style/bracket/col.css">
-	<link rel="stylesheet" type="text/css" href="./style/bracket/7cols.css">
-	<link rel="stylesheet" type="text/css" href="./style/bracket/flag-icon.css">
+	<link href="./css/flag-icon.min.css" rel="stylesheet" type="text/css">
+	<link href="./css/9cols.css" rel="stylesheet" type="text/css">
+	<link href="./css/col.css" rel="stylesheet" type="text/css">
+	<link href="./css/style.css" rel="stylesheet" type="text/css">
+	<script src="./js/charting.js"></script>
 </head>
-
 <body>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
 	<div id="wrapper">
 		<div id="container">
-			<div class="section group">
-				<div class="col span_5_of_7" id="title">
-					<h1>FIFA World Cup 2014 Simulation</h1>
-				</div>
-				<div class="col span_2_of_7"></div>
-			</div>
-			<nav>
-				<ul>
-					<li>
-						<h3 class="iz_button" id="more_info">How does it work?</h3>
-					</li>
-					<li>
-						<h3 class="iz_button" id="run_sim">Run Simulation</h3>
-					</li>
-					<li>
-						<h3 class="iz_button" id="reset_sim">Reset</h3>
-					</li>
-					<li>
-						<h3 class="iz_button" id="about">About</h3>
-					</li>
-					<li>
-						<div class="fb-share-button" data-href="http://pdr1017.github.io/" data-type="button_count"></div>
-					</li>
-				</ul>
-			</nav>
-			<div class="section group">
-				<div class="col span_7_of_7">
-					<p id="info_section"></p>
+			<div id="section group">
+				<div class="col span_9_of_9">
+					<h1>FIFA World Cup 2014</h1>
 				</div>
 			</div>
-			<div id="matches">
-				<div class="section group">
-					<div class="col span_1_of_7 match_titles">
-						<p>Round of 16</p>
-					</div>
-					<div class="col span_1_of_7 match_titles">
-						<p>Quarterfinals</p>
-					</div>
-					<div class="col span_1_of_7 match_titles">
-						<p>Semifinals</p>
-					</div>
-					<div class="col span_1_of_7 match_titles">
-						<p>Finals</p>
-					</div>
-					<div class="col span_1_of_7 match_titles">
-						<p>Semifinals</p>
-					</div>
-					<div class="col span_1_of_7 match_titles">
-						<p>Quarterfinals</p>
-					</div>
-					<div class="col span_1_of_7 match_titles">
-						<p>Round of 16</p>
-					</div>
+			<div id="section group">
+				<div class="col span_1_of_9">
+					<h2 class="group_button" id="all_groups">All Groups</h2>
 				</div>
-				<!-- TOP GROUP -->
-				<div class="section group">
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_49">
-							<span class="team_holder" id="team1">Brazil</span>
-							<span class="team_holder" id="team2">Chile</span>
-							<span class="flag-icon flag-icon-br"></span>
-							BRA vs CHI
-							<span class="flag-icon flag-icon-cl"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-down"></i>
-							-->
-						</p>
-					</div>
-					<div class="col span_3_of_7"></div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-down" id="to_flip"></i>
-							-->
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_51">
-							<span class="team_holder" id="team1">Netherlands</span>
-							<span class="team_holder" id="team2">Mexico</span>
-							<span class="flag-icon flag-icon-nl"></span>
-							NED vs MEX
-							<span class="flag-icon flag-icon-mx"></span>
-						</p>
-					</div>
+				<div class="col span_1_of_9">
+					<h2 class="group_button" id="group_a">Group A</h2>
 				</div>
-				<!-- WINNERS FROM TOP GROUPS -->
-				<div class="section group">
-					<div class="col span_1_of_7"></div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_57">
-							<span class="team_holder" id="team1"></span>
-							<span class="team_holder" id="team2"></span>
-							<span id="first_57"></span>
-							<span id="teams"></span>
-							<span id="second_57"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-down"></i>
-							-->
-							</p>
-					</div>
-					<div class="col span_1_of_7">
-						<div class="top_4 to_900 to_float_L">Winner:</div>
-						<span id="world_cup_1st_flag" class="to_float_R flag-icon"></span>
-						<div class="to_float_R" id="world_cup_1st"></div>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-down" id="to_flip"></i>
-							-->
-							</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_59">
-							<span class="team_holder" id="team1"></span>
-							<span class="team_holder" id="team2"></span>
-							<span id="first_59"></span>
-							<span id="teams"></span>
-							<span id="second_59"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7"></div>
+				<div class="col span_1_of_9">
+					<h2 class="group_button" id="group_b">Group B</h2>
 				</div>
-				<!-- TOP MIDDLE GROUP -->
-				<div class="section group">
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_50">
-							<span class="team_holder" id="team1">Colombia</span>
-							<span class="team_holder" id="team2">Uruguay</span>
-							<span class="flag-icon flag-icon-co"></span>
-							COL vs URU
-							<span class="flag-icon flag-icon-uy"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-up"></i>
-							-->
-							</p>
-					</div>
-					<div class="col span_1_of_7"></div>
-					<div class="col span_1_of_7">
-						<div class="top_4 to_900 to_float_L">2nd:</div>
-						<span id="world_cup_2nd_flag" class="to_float_R flag-icon"></span>
-						<div class="to_float_R" id="world_cup_2nd"></div>
-					</div>
-					<div class="col span_1_of_7"></div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-up" id="to_flip"></i>
-							-->
-							</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_52">
-							<span class="team_holder" id="team1">Costa Rica</span>
-							<span class="team_holder" id="team2">Greece</span>
-							<span class="flag-icon flag-icon-cr"></span>
-							CRC vs GRE
-							<span class="flag-icon flag-icon-gr"></span>
-						</p>
-					</div>
+				<div class="col span_1_of_9">
+					<h2 class="group_button" id="group_c">Group C</h2>
 				</div>
-				<!-- SEMI & FINALS -->
-				<div class="section group">
-					<div class="col span_2_of_7"></div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_61">
-							<span class="team_holder" id="team1"></span>
-							<span class="team_holder" id="team2"></span>
-							<span id="first_61"></span>
-							<span id="teams"></span>
-							<span id="second_61"></span>
-							<!--
-						 	<i class="fa fa-long-arrow-right"></i>
-						 	-->
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_64">
-							<span class="team_holder" id="team1"></span>
-							<span class="team_holder" id="team2"></span>
-							<span id="first_64"></span>
-							<span id="teams"></span>
-							<span id="second_64"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_62">
-							<span class="team_holder" id="team1"></span>
-							<span class="team_holder" id="team2"></span>
-							<span id="first_62"></span>
-							<span id="teams"></span>
-							<span id="second_62"></span>
-							<!--
-							<i class="fa fa-long-arrow-left"></i>
-							-->
-						</p>
-					</div>
-					<div class="col span_2_of_7"></div>
+				<div class="col span_1_of_9">
+					<h2 class="group_button" id="group_d">Group D</h2>
 				</div>
-				<!-- BOTTOM MIDDLE GROUP -->
-				<div class="section group">
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_53">
-							<span class="team_holder" id="team1">France</span>
-							<span class="team_holder" id="team2">Nigeria</span>
-							<span class="flag-icon flag-icon-fr"></span>
-							FRA vs NGA
-							<span class="flag-icon flag-icon-ng"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-down"></i>
-							-->
-							</p>
-					</div>
-					<div class="col span_1_of_7"></div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_63">
-							<span class="team_holder" id="team1"></span>
-							<span class="team_holder" id="team2"></span>
-							<span id="first_63"></span>
-							<span id="teams"></span>
-							<span id="second_63"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7"></div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-down" id="to_flip"></i>
-							-->
-							</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_55">
-							<span class="team_holder" id="team1">Argentina</span>
-							<span class="team_holder" id="team2">Switzerland</span>
-							<span class="flag-icon flag-icon-ar"></span>
-							ARG vs SWI
-							<span class="flag-icon flag-icon-ch"></span>
-						</p>
-					</div>
+				<div class="col span_1_of_9">
+					<h2 class="group_button" id="group_e">Group E</h2>
 				</div>
-				<!-- WINNERS FROM BOTTOM GROUPS -->
-				<div class="section group">
-					<div class="col span_1_of_7"></div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_58">
-							<span class="team_holder" id="team1"></span>
-							<span class="team_holder" id="team2"></span>
-							<span id="first_58"></span>
-							<span id="teams"></span>
-							<span id="second_58"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-up"></i>
-							-->
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<div class="top_4 to_900 to_float_L">3rd:</div>
-						<span id="world_cup_3rd_flag" class="to_float_R flag-icon"></span>
-						<div class="to_float_R" id="world_cup_3rd"></div>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-up" id="to_flip"></i>
-							-->
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_60">
-							<span class="team_holder" id="team1"></span>
-							<span class="team_holder" id="team2"></span>
-							<span id="first_60"></span>
-							<span id="teams"></span>
-							<span id="second_60"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7"></div>
+				<div class="col span_1_of_9">
+					<h2 class="group_button" id="group_f">Group F</h2>
 				</div>
-				<!-- BOTTOM GROUP -->
-				<div class="section group">
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_54">
-							<span class="team_holder" id="team1">Germany</span>
-							<span class="team_holder" id="team2">Algeria</span>
-							<span class="flag-icon flag-icon-de"></span>
-							GER vs ALG
-							<span class="flag-icon flag-icon-dz"></span>
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-up"></i>
-							-->
-							</p>
-					</div>
-					<div class="col span_1_of_7"></div>
-					<div class="col span_1_of_7">
-						<div class="to_900 top_4 to_float_L">4th:</div>
-						<span id="world_cup_4th_flag" class="to_float_R flag-icon"></span>
-						<div class="to_float_R" id="world_cup_4th"></div>
-					</div>
-					<div class="col span_1_of_7"></div>
-					<div class="col span_1_of_7">
-						<p class="no_background">
-							<!--
-							<i class="fa fa-level-up" id="to_flip"></i>
-							-->
-						</p>
-					</div>
-					<div class="col span_1_of_7">
-						<p class="match_button" id="match_56">
-							<span class="team_holder" id="team1">Belgium</span>
-							<span class="team_holder" id="team2">USA</span>
-							<span class="flag-icon flag-icon-be"></span>
-							BEL vs USA
-							<span class="flag-icon flag-icon-us"></span>
-						</p>
-					</div>
+				<div class="col span_1_of_9">
+					<h2 class="group_button" id="group_g">Group G</h2>
+				</div>
+				<div class="col span_1_of_9">
+					<h2 class="group_button" id="group_h">Group H</h2>
+				</div>
+			</div> 
+			<div id="section group">
+				<div class="col span_9_of_9">
+					<div id="myChartDiv"></div>
+				</div>
+			</div>
+			<div id="section group">
+				<div class="col span_9_of_9">
+					<p id="source">Data from <a href="http://www.fifa.com">fifa.com</a> | Updated: 24 June</p>
 				</div>
 			</div>
 		</div>
 	</div>
-<script src="./js/teams.js" type="text/javascript"></script>
-<script src="./js/team_functions.js" type="text/javascript"></script>
-<script src="./js/actions.js" type="text/javascript"></script>
+
+	<script>
+	var globalCurrentLink = "all_groups";
+
+	$(".group_button").mouseenter(function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			$(this).css("background-color", "#FFFFFF");
+			$(this).css("color", "#326395");
+			$(this).css("border-radius", "10px");
+		};
+	});
+
+	$(".group_button").mouseleave(function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			$(this).css("background-color", "#326395");
+			$(this).css("color","#FFFFFF");
+		};
+	});
+	
+	// Loads All Group Data =====================================
+
+	$("#all_groups").bind('click', function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			globalCurrentLink = $(this).attr("id");
+			zingchart.exec('myChartDiv', 'setdata', {
+				"data" : {
+					"graphset":[
+		    		{
+				        "type":"bar",
+				        "stacked" : true,
+				        "background-color":"#326395",
+				        "title":{
+				            "text":"Goals For/Goals Against | All Groups",
+				            "background-color":"#326395",
+				            "fontFamily" : "Raleway",
+				            "fontWeight" : "200",
+				            "fontSize" : "16",
+				            "color":"#FFFFFF"
+				        },
+				        "scaleX":{
+				            "line-color":"none",
+				            "line-width":0,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"#none",
+				                "line-width":1,
+				                "visible":0
+				            },
+				            "item":{
+				                "color":"#FFFFFF",
+				                "fontFamily" : "Raleway",
+				            	"fontWeight" : "200",
+				            },
+				            "labels": ["ALG","ARG","AUS","BEL","BOS","BRA","CAM","CHL","COL","COS","CRO","CIV","ECU","ENG","FRA","GER","GHA","GRE","HON","IRA","ITA","JPN","KOR","MEX","NED","NGA","POR","RUS","SPA","SWI","USA","URU"],
+				        },
+				        "scaleY":{
+				            "line-color":"none",
+				            "line-width":1,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"none",
+				                "line-width":1
+				            },
+				            "item":{
+				                "color":"#326395"
+				            }
+				        },
+				        "plot":{
+				            "tooltip":{
+				                "shadow":0,
+				                "border-radius":5,
+				                "sticky":1,
+				                "timeout":200
+				            },
+				            "animation" : {
+				            	"effect" : "2",
+				            	"delay" : 200,
+				            	"speed" : 100,
+				            },
+				        },
+				        "series":[
+				            {
+				                "values":[5,2,3,3,1,7,1,5,9,4,5,4,3,2,7,6,3,2,1,0,2,2,3,4,10,1,2,1,4,4,4,4],
+				                "data-scored" : ["Algeria has scored ","Argentina has scored ","Australia has scored ","Belgium has scored ","Bosnia & Herzegovina has scored ","Brazil has scored ","Cameroon has scored ","Chile has scored ","Colombia has scored ","Costa Rica has scored ","Croatia has scored ","Cote d`Ivoire has scored ","Ecuador has scored ","England has scored ","France has scored ","Germany has scored ","Ghana has scored ","Greece has scored ","Honduras has scored ","Iran has scored ","Italy has scored ","Japan has scored ","South Korea has scored ","Mexico has scored ","Netherlands has scored ","Nigeria has scored ","Portugal has scored ","Russia has scored ","Spain has scored ","Switzerland has scored ","USA has scored ","Uruguay has scored "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 1",
+				                		"text" : "%data-scored" + "%v" + " goal",
+				                	},
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-scored" + "no goals",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-scored" + "%v" + " goals" 
+				                },
+				                "background-color":"#44CC44"
+				            },
+				            {
+				                "values":[-4,-1,-9,-1,-3,-2,-9,-3,-2,-1,-6,-5,-3,-4,-2,-2,-4,-4,-5,-1,-3,-6,-5,-1,-3,0,-6,-2,-7,-6,-3,-4],
+				                "data-positive":[4,1,9,1,3,2,9,3,2,1,6,5,3,4,2,2,4,4,5,1,3,6,5,1,3,0,6,2,7,6,3,4],
+				                "data-allowed" : ["Algeria has allowed ","Argentina has allowed ","Australia has allowed ","Belgium has allowed ","Bosnia & Herzegovina has allowed ","Brazil has allowed ","Cameroon has allowed ","Chile has allowed ","Colombia has allowed ","Costa Rica has allowed ","Croatia has allowed ","Cote d`Ivoire has allowed ","Ecuador has allowed ","England has allowed ","France has allowed ","Germany has allowed ","Ghana has allowed ","Greece has allowed ","Honduras has allowed ","Iran has allowed ","Italy has allowed ","Japan has allowed ","South Korea has allowed ","Mexico has allowed ","Netherlands has allowed ","Nigeria has allowed ","Portugal has allowed ","Russia has allowed ","Spain has allowed ","Switzerland has allowed ","USA has allowed ","Uruguay has allowed "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-allowed" + " no goals",
+				                	},
+				                	{
+				                		"rule" : "%v == -1",
+				                		"text" : "%data-allowed" + "1 goal",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-allowed" + "%data-positive" + " goals" 
+				                },
+				                "background-color":"#CC4444"
+				            }
+				        ]
+				    }
+				]
+				}
+			});
+			$(".group_button").css("background-color", "#326395");
+			$(".group_button").css("color", "#FFFFFF");
+			$("#all_groups").css("background-color", "#FFFFFF");
+			$("#all_groups").css("color", "#326395");
+		};
+	});
+
+	//Loads Group A Data ===========================
+
+	$("#group_a").bind('click', function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			globalCurrentLink = $(this).attr("id");
+			zingchart.exec('myChartDiv', 'setdata', {
+				"data" : {
+					"graphset":[
+		    		{
+				        "type":"bar",
+				        "stacked" : true,
+				        "background-color":"#326395",
+				        "title":{
+				            "text":"Goals For/Goals Against | Group A",
+				            "background-color":"#326395",
+				            "fontFamily" : "Raleway",
+				            "fontWeight" : "200",
+				            "fontSize" : "16",
+				            "color":"#FFFFFF"
+				        },
+				        "scaleX":{
+				            "line-color":"none",
+				            "line-width":0,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"#none",
+				                "line-width":1,
+				                "visible":0
+				            },
+				            "item":{
+				                "color":"#FFFFFF",
+				                "fontFamily" : "Raleway",
+				            	"fontWeight" : "200",
+				            },
+				            "labels": ["Brazil","Cameroon","Croatia","Mexico"],
+				        },
+				        "scaleY":{
+				            "line-color":"none",
+				            "line-width":1,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"none",
+				                "line-width":1
+				            },
+				            "item":{
+				                "color":"#326395"
+				            }
+				        },
+				        "plot":{
+				            "tooltip":{
+				                "shadow":0,
+				                "border-radius":5,
+				                "sticky":1,
+				                "timeout":200
+				            },
+				            "animation" : {
+				            	"effect" : "2",
+				            	"delay" : 200,
+				            	"speed" : 100,
+				            },
+				        },
+				        "series":[
+				            {
+				                "values":[7,1,6,4],
+				                "data-scored" : ["Brazil has scored ","Cameroon has scored ","Croatia has scored ","Mexico has scored "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 1",
+				                		"text" : "%data-scored" + "%v" + " goal",
+				                	},
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-scored" + "no goals",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-scored" + "%v" + " goals" 
+				                },
+				                "background-color":"#44CC44"
+				            },
+				            {
+				                "values":[-2,-9,-6,-1],
+				                "data-positive" : [2,9,6,1],
+				                "data-allowed" : ["Brazil has allowed ","Cameroon has allowed ","Croatia has allowed ","Mexico has allowed "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-allowed" + " no goals",
+				                	},
+				                	{
+				                		"rule" : "%v == -1",
+				                		"text" : "%data-allowed" + "1 goal",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-allowed" + "%data-positive" + " goals" 
+				                },
+				                "background-color":"#CC4444"
+				            }
+				        ]
+				    }
+				]
+				}
+			});
+			$(".group_button").css("background-color", "#326395");
+			$(".group_button").css("color", "#FFFFFF")
+			$("#group_a").css("background-color", "#FFFFFF");
+			$("#group_a").css("color", "#326395");
+		};
+	});
+	// Loads Group B Data ===============================
+
+	$("#group_b").bind('click', function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			globalCurrentLink = $(this).attr("id");
+			zingchart.exec('myChartDiv', 'setdata', {
+				"data" : {
+					"graphset":[
+		    		{
+				        "type":"bar",
+				        "stacked" : true,
+				        "background-color":"#326395",
+				        "title":{
+				            "text":"Goals For/Goals Against | Group B",
+				            "background-color":"#326395",
+				            "fontFamily" : "Raleway",
+				            "fontWeight" : "200",
+				            "fontSize" : "16",
+				            "color":"#FFFFFF"
+				        },
+				        "scaleX":{
+				            "line-color":"none",
+				            "line-width":0,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"#none",
+				                "line-width":1,
+				                "visible":0
+				            },
+				            "item":{
+				                "color":"#FFFFFF",
+				                "fontFamily" : "Raleway",
+				            	"fontWeight" : "200",
+				            },
+				            "labels": ["Australia","Chile","Netherlands","Spain"],
+				        },
+				        "scaleY":{
+				            "line-color":"none",
+				            "line-width":1,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"none",
+				                "line-width":1
+				            },
+				            "item":{
+				                "color":"#326395"
+				            }
+				        },
+				        "plot":{
+				            "tooltip":{
+				                "shadow":0,
+				                "border-radius":5,
+				                "sticky":1,
+				                "timeout":200
+				            },
+				            "animation" : {
+				            	"effect" : "2",
+				            	"delay" : 200,
+				            	"speed" : 100,
+				            },
+				        },
+				        "series":[
+				            {
+				                "values":[3,5,10,4],
+				                "data-scored" : ["Australia has scored ","Chile has scored ","Netherlands has scored ","Spain has scored "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 1",
+				                		"text" : "%data-scored" + "%v" + " goal",
+				                	},
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-scored" + "no goals",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-scored" + "%v" + " goals" 
+				                },
+				                "background-color":"#44CC44"
+				            },
+				            {
+				                "values":[-9,-3,-3,-7],
+				                "data-positive" : [9,3,3,7],
+				                "data-allowed" : ["Australia has allowed ","Chile has allowed ","Netherlands has allowed ","Spain has allowed "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-allowed" + " no goals",
+				                	},
+				                	{
+				                		"rule" : "%v == -1",
+				                		"text" : "%data-allowed" + "1 goal",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-allowed" + "%data-positive" + " goals" 
+				                },
+				                "background-color":"#CC4444"
+				            }
+				        ]
+				    }
+				]
+				}
+			});
+			$(".group_button").css("background-color", "#326395");
+			$(".group_button").css("color", "#FFFFFF")
+			$("#group_b").css("background-color", "#FFFFFF");
+			$("#group_b").css("color", "#326395");
+		};
+	});
+	
+	// Load Group C Data =====================================
+
+	$("#group_c").bind('click', function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			globalCurrentLink = $(this).attr("id");
+			zingchart.exec('myChartDiv', 'setdata', {
+				"data" : {
+					"graphset":[
+		    		{
+				        "type":"bar",
+				        "stacked" : true,
+				        "background-color":"#326395",
+				        "title":{
+				            "text":"Goals For/Goals Against | Group C",
+				            "background-color":"#326395",
+				            "fontFamily" : "Raleway",
+				            "fontWeight" : "200",
+				            "fontSize" : "16",
+				            "color":"#FFFFFF"
+				        },
+				        "scaleX":{
+				            "line-color":"none",
+				            "line-width":0,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"#none",
+				                "line-width":1,
+				                "visible":0
+				            },
+				            "item":{
+				                "color":"#FFFFFF",
+				                "fontFamily" : "Raleway",
+				            	"fontWeight" : "200",
+				            },
+				            "labels": ["Colombia","Cote d'Ivoire","Greece","Japan"],
+				        },
+				        "scaleY":{
+				            "line-color":"none",
+				            "line-width":1,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"none",
+				                "line-width":1
+				            },
+				            "item":{
+				                "color":"#326395"
+				            }
+				        },
+				        "plot":{
+				            "tooltip":{
+				                "shadow":0,
+				                "border-radius":5,
+				                "sticky":1,
+				                "timeout":200
+				            },
+				            "animation" : {
+				            	"effect" : "2",
+				            	"delay" : 200,
+				            	"speed" : 100,
+				            },
+				        },
+				        "series":[
+				            {
+				                "values":[9,4,2,2],
+				                "data-scored" : ["Colombia has scored ","Cote d'Ivoire has scored ","Greece has scored ","Japan has scored "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 1",
+				                		"text" : "%data-scored" + "%v" + " goal",
+				                	},
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-scored" + "no goals",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-scored" + "%v" + " goals" 
+				                },
+				                "background-color":"#44CC44"
+				            },
+				            {
+				                "values":[-2,-5,-4,-6],
+				                "data-positive" : [2,5,4,6],
+				                "data-allowed" : ["Colombia has allowed ","Cote d'Ivoire has allowed ","Greece has allowed ","Japan has allowed "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-allowed" + " no goals",
+				                	},
+				                	{
+				                		"rule" : "%v == -1",
+				                		"text" : "%data-allowed" + "1 goal",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-allowed" + "%data-positive" + " goals" 
+				                },
+				                "background-color":"#CC4444"
+				            }
+				        ]
+				    }
+				]
+				}
+			});
+			$(".group_button").css("background-color", "#326395");
+			$(".group_button").css("color", "#FFFFFF")
+			$("#group_c").css("background-color", "#FFFFFF");
+			$("#group_c").css("color", "#326395");
+		};
+	});
+	
+	// Load Group D Data ================================
+
+	$("#group_d").bind('click', function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			globalCurrentLink = $(this).attr("id");
+			zingchart.exec('myChartDiv', 'setdata', {
+				"data" : {
+					"graphset":[
+		    		{
+				        "type":"bar",
+				        "stacked" : true,
+				        "background-color":"#326395",
+				        "title":{
+				            "text":"Goals For/Goals Against | Group D",
+				            "background-color":"#326395",
+				            "fontFamily" : "Raleway",
+				            "fontWeight" : "200",
+				            "fontSize" : "16",
+				            "color":"#FFFFFF"
+				        },
+				        "scaleX":{
+				            "line-color":"none",
+				            "line-width":0,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"#none",
+				                "line-width":1,
+				                "visible":0
+				            },
+				            "item":{
+				                "color":"#FFFFFF",
+				                "fontFamily" : "Raleway",
+				            	"fontWeight" : "200",
+				            },
+				            "labels": ["Costa Rica","England","Italy","Uruguay"],
+				        },
+				        "scaleY":{
+				            "line-color":"none",
+				            "line-width":1,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"none",
+				                "line-width":1
+				            },
+				            "item":{
+				                "color":"#326395"
+				            }
+				        },
+				        "plot":{
+				            "tooltip":{
+				                "shadow":0,
+				                "border-radius":5,
+				                "sticky":1,
+				                "timeout":200
+				            },
+				            "animation" : {
+				            	"effect" : "2",
+				            	"delay" : 200,
+				            	"speed" : 100,
+				            },
+				        },
+				        "series":[
+				            {
+				                "values":[4,2,2,4],
+				                "data-scored" : ["Costa Rica has scored ","England has scored ","Italy has scored ","Uruguay has scored "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 1",
+				                		"text" : "%data-scored" + "%v" + " goal",
+				                	},
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-scored" + "no goals",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-scored" + "%v" + " goals" 
+				                },
+				                "background-color":"#44CC44"
+				            },
+				            {
+				                "values":[-1,-4,-3,-4],
+				                "data-positive" : [1,4,3,4],
+				                "data-allowed" : ["Costa Rica has allowed ","England has allowed ","Italy has allowed ","Uruguay has allowed "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-allowed" + " no goals",
+				                	},
+				                	{
+				                		"rule" : "%v == -1",
+				                		"text" : "%data-allowed" + "1 goal",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-allowed" + "%data-positive" + " goals" 
+				                },
+				                "background-color":"#CC4444"
+				            }
+				        ]
+				    }
+				]
+				}
+			});
+			$(".group_button").css("background-color", "#326395");
+			$(".group_button").css("color", "#FFFFFF");
+			$(".group_button").css("border-radius", "10px");
+			$("#group_d").css("background-color", "#FFFFFF");
+			$("#group_d").css("color", "#326395");
+		};
+	});
+	
+	// Load Group E ===================================
+
+	$("#group_e").bind('click', function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			globalCurrentLink = $(this).attr("id");
+			zingchart.exec('myChartDiv', 'setdata', {
+				"data" : {
+					"graphset":[
+		    		{
+				        "type":"bar",
+				        "stacked" : true,
+				        "background-color":"#326395",
+				        "title":{
+				            "text":"Goals For/Goals Against | Group E",
+				            "background-color":"#326395",
+				            "fontFamily" : "Raleway",
+				            "fontWeight" : "200",
+				            "fontSize" : "16",
+				            "color":"#FFFFFF"
+				        },
+				        "scaleX":{
+				            "line-color":"none",
+				            "line-width":0,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"#none",
+				                "line-width":1,
+				                "visible":0
+				            },
+				            "item":{
+				                "color":"#FFFFFF",
+				                "fontFamily" : "Raleway",
+				            	"fontWeight" : "200",
+				            },
+				            "labels": ["Ecuador","France","Honduras","Switzerland"],
+				        },
+				        "scaleY":{
+				            "line-color":"none",
+				            "line-width":1,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"none",
+				                "line-width":1
+				            },
+				            "item":{
+				                "color":"#326395"
+				            }
+				        },
+				        "plot":{
+				            "tooltip":{
+				                "shadow":0,
+				                "border-radius":5,
+				                "sticky":1,
+				                "timeout":200
+				            },
+				            "animation" : {
+				            	"effect" : "2",
+				            	"delay" : 200,
+				            	"speed" : 100,
+				            },
+				        },
+				        "series":[
+				            {
+				                "values":[3,8,1,4],
+				                "data-scored" : ["Ecuador has scored ","France has scored ","Honduras has scored ","Switzerland has scored "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 1",
+				                		"text" : "%data-scored" + "%v" + " goal",
+				                	},
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-scored" + "no goals",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-scored" + "%v" + " goals" 
+				                },
+				                "background-color":"#44CC44"
+				            },
+				            {
+				                "values":[-3,-2,-5,-6],
+				                "data-positive" : [3,2,5,6],
+				                "data-allowed" : ["Ecuador has allowed ","France has allowed ","Honduras has allowed ","Switzerland has allowed "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-allowed" + " no goals",
+				                	},
+				                	{
+				                		"rule" : "%v == -1",
+				                		"text" : "%data-allowed" + "1 goal",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-allowed" + "%data-positive" + " goals" 
+				                },
+				                "background-color":"#CC4444"
+				            }
+				        ]
+				    }
+				]
+				}
+			});
+			$(".group_button").css("background-color", "#326395");
+			$(".group_button").css("color", "#FFFFFF")
+			$("#group_e").css("background-color", "#FFFFFF");
+			$("#group_e").css("color", "#326395");
+		};
+	});
+	
+	// Load Group F Data ==============================
+
+	$("#group_f").bind('click', function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			globalCurrentLink = $(this).attr("id");
+			zingchart.exec('myChartDiv', 'setdata', {
+				"data" : {
+					"graphset":[
+		    		{
+				        "type":"bar",
+				        "stacked" : true,
+				        "background-color":"#326395",
+				        "title":{
+				            "text":"Goals For/Goals Against | Group F",
+				            "background-color":"#326395",
+				            "fontFamily" : "Raleway",
+				            "fontWeight" : "200",
+				            "fontSize" : "16",
+				            "color":"#FFFFFF"
+				        },
+				        "scaleX":{
+				            "line-color":"none",
+				            "line-width":0,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"#none",
+				                "line-width":1,
+				                "visible":0
+				            },
+				            "item":{
+				                "color":"#FFFFFF",
+				                "fontFamily" : "Raleway",
+				            	"fontWeight" : "200",
+				            },
+				            "labels": ["Argentina","Bosnia & Herzegovina","Iran","Nigeria"],
+				        },
+				        "scaleY":{
+				            "line-color":"none",
+				            "line-width":1,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"none",
+				                "line-width":1
+				            },
+				            "item":{
+				                "color":"#326395"
+				            }
+				        },
+				        "plot":{
+				            "tooltip":{
+				                "shadow":0,
+				                "border-radius":5,
+				                "sticky":1,
+				                "timeout":200
+				            },
+				            "animation" : {
+				            	"effect" : "2",
+				            	"delay" : 200,
+				            	"speed" : 100,
+				            },
+				        },
+				        "series":[
+				            {
+				                "values":[3,1,0,1],
+				                "data-scored" : ["Argentina has scored ","Bosnia & Herzegovina has scored ","Iran has scored ","Nigeria has scored "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 1",
+				                		"text" : "%data-scored" + "%v" + " goal",
+				                	},
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-scored" + "no goals",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-scored" + "%v" + " goals" 
+				                },
+				                "background-color":"#44CC44"
+				            },
+				            {
+				                "values":[-1,-3,-1,0],
+				                "data-positive" : [1,3,1,0],
+				                "data-allowed" : ["Argentina has allowed ","Bosnia & Herzegovina has allowed ","Iran has allowed ","Nigeria has allowed "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-allowed" + " no goals",
+				                	},
+				                	{
+				                		"rule" : "%v == -1",
+				                		"text" : "%data-allowed" + "1 goal",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-allowed" + "%data-positive" + " goals" 
+				                },
+				                "background-color":"#CC4444"
+				            }
+				        ]
+				    }
+				]
+				}
+			});
+			$(".group_button").css("background-color", "#326395");
+			$(".group_button").css("color", "#FFFFFF")
+			$("#group_f").css("background-color", "#FFFFFF");
+			$("#group_f").css("color", "#326395");
+		};
+	});
+	
+	// Load Group G Data ====================================
+
+	$("#group_g").bind('click', function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			globalCurrentLink = $(this).attr("id");
+			zingchart.exec('myChartDiv', 'setdata', {
+				"data" : {
+					"graphset":[
+		    		{
+				        "type":"bar",
+				        "stacked" : true,
+				        "background-color":"#326395",
+				        "title":{
+				            "text":"Goals For/Goals Against | Group G",
+				            "background-color":"#326395",
+				            "fontFamily" : "Raleway",
+				            "fontWeight" : "200",
+				            "fontSize" : "16",
+				            "color":"#FFFFFF"
+				        },
+				        "scaleX":{
+				            "line-color":"none",
+				            "line-width":0,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"#none",
+				                "line-width":1,
+				                "visible":0
+				            },
+				            "item":{
+				                "color":"#FFFFFF",
+				                "fontFamily" : "Raleway",
+				            	"fontWeight" : "200",
+				            },
+				            "labels": ["Germany","Ghana","Portugal","USA"],
+				        },
+				        "scaleY":{
+				            "line-color":"none",
+				            "line-width":1,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"none",
+				                "line-width":1
+				            },
+				            "item":{
+				                "color":"#326395"
+				            }
+				        },
+				        "plot":{
+				            "tooltip":{
+				                "shadow":0,
+				                "border-radius":5,
+				                "sticky":1,
+				                "timeout":200
+				            },
+				            "animation" : {
+				            	"effect" : "2",
+				            	"delay" : 200,
+				            	"speed" : 100,
+				            },
+				        },
+				        "series":[
+				            {
+				                "values":[6,3,2,4],
+				                "data-scored" : ["Germany has scored ","Ghana has scored ","Portugal has scored ","USA has scored "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 1",
+				                		"text" : "%data-scored" + "%v" + " goal",
+				                	},
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-scored" + "no goals",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-scored" + "%v" + " goals" 
+				                },
+				                "background-color":"#44CC44"
+				            },
+				            {
+				                "values":[-2,-4,-6,-3],
+				                "data-positive" : [-2,-4,-6,-3],
+				                "data-allowed" : ["Germany has allowed ","Ghana has allowed ","Portugal has allowed ","USA has allowed "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-allowed" + " no goals",
+				                	},
+				                	{
+				                		"rule" : "%v == -1",
+				                		"text" : "%data-allowed" + "1 goal",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-allowed" + "%data-positive" + " goals" 
+				                },
+				                "background-color":"#CC4444"
+				            }
+				        ]
+				    }
+				]
+				}
+			});
+			$(".group_button").css("background-color", "#326395");
+			$(".group_button").css("color", "#FFFFFF")
+			$("#group_g").css("background-color", "#FFFFFF");
+			$("#group_g").css("color", "#326395");
+		};
+	});
+	
+	// Load Group H Data =====================================
+
+	$("#group_h").bind('click', function() {
+		if ($(this).attr("id") != globalCurrentLink) {
+			globalCurrentLink = $(this).attr("id");
+			zingchart.exec('myChartDiv', 'setdata', {
+				"data" : {
+					"graphset":[
+		    		{
+				        "type":"bar",
+				        "stacked" : true,
+				        "background-color":"#326395",
+				        "title":{
+				            "text":"Goals For/Goals Against | Group H",
+				            "background-color":"#326395",
+				            "fontFamily" : "Raleway",
+				            "fontWeight" : "200",
+				            "fontSize" : "16",
+				            "color":"#FFFFFF"
+				        },
+				        "scaleX":{
+				            "line-color":"none",
+				            "line-width":0,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"#none",
+				                "line-width":1,
+				                "visible":0
+				            },
+				            "item":{
+				                "color":"#FFFFFF",
+				                "fontFamily" : "Raleway",
+				            	"fontWeight" : "200",
+				            },
+				            "labels": ["Algeria","Belgium","South Korea","Russia"],
+				        },
+				        "scaleY":{
+				            "line-color":"none",
+				            "line-width":1,
+				            "guide":{
+				                "line-color":"none"
+				            },
+				            "tick":{
+				                "line-color":"none",
+				                "line-width":1
+				            },
+				            "item":{
+				                "color":"#326395"
+				            }
+				        },
+				        "plot":{
+				            "tooltip":{
+				                "shadow":0,
+				                "border-radius":5,
+				                "sticky":1,
+				                "timeout":200
+				            },
+				            "animation" : {
+				            	"effect" : "2",
+				            	"delay" : 200,
+				            	"speed" : 100,
+				            },
+				        },
+				        "series":[
+				            {
+				                "values":[5,3,3,1],
+				                "data-scored" : ["Algeria has scored ","Belgium has scored ","South Korea has scored ","Russia has scored "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 1",
+				                		"text" : "%data-scored" + "%v" + " goal",
+				                	},
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-scored" + "no goals",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-scored" + "%v" + " goals" 
+				                },
+				                "background-color":"#44CC44"
+				            },
+				            {
+				                "values":[-4,-1,-5,-2],
+				                "data-positive" : [4,1,5,2],
+				                "data-allowed" : ["Algeria has allowed ","Belgium has allowed ","South Korea has allowed ","Russia has allowed "],
+				                "tooltip" : {
+				                	"rules" : [
+				                	{
+				                		"rule" : "%v == 0",
+				                		"text" : "%data-allowed" + " no goals",
+				                	},
+				                	{
+				                		"rule" : "%v == -1",
+				                		"text" : "%data-allowed" + "1 goal",
+				                	}
+				                	],
+				                	"fontFamily" : "Raleway",
+				            		"fontWeight" : "200",
+				            		"fontSize" : "14",
+				            		"maxWidth" : "100px",
+				            		"wrapText" : true,
+				                	"text" : "%data-allowed" + "%data-positive" + " goals" 
+				                },
+				                "background-color":"#CC4444"
+				            }
+				        ]
+				    }
+				]
+				}
+			});
+			$(".group_button").css("background-color", "#326395");
+			$(".group_button").css("color", "#FFFFFF")
+			$("#group_h").css("background-color", "#FFFFFF");
+			$("#group_h").css("color", "#326395");
+		};
+	});
+	</script>
 </body>
 </html>
