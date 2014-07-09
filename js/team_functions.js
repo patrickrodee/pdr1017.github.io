@@ -138,13 +138,11 @@ function compareTeamRatings(team1, team2) {
 	var team1Def = defense(team1);
 	var team1Goa = goalie(team1);
 	var team1Rating = (team1Acc*.4 + team1Goa*.1 + team1Def*.4 + team1Goa*.1)*100;
-	document.getElementById("team1_rating").innerHTML = team1 + "'s Rating: " + rounding(team1Rating).toString();
 	var team2Acc = accuracy(team2);
 	var team2Del = delivery(team2);
 	var team2Def = defense(team2);
 	var team2Goa = goalie(team2);
 	var team2Rating = (team2Acc*.4 + team2Goa*.1 + team2Def*.4 + team2Goa*.1)*100;
-	document.getElementById("team2_rating").innerHTML = team2 + "'s Rating: " + rounding(team2Rating).toString();
 	return;
 }
 
@@ -155,14 +153,32 @@ function findWinner(team1, team2) {
 	var team1Def = defense(team1);
 	var team1Goa = goalie(team1);
 	var team1OffRating = rounding((team1Acc*.4 + team1Del*.1)*100);
+	console.log("===============================");
+	console.log("*** " + team1 + " ***");
+	console.log("Acc: " + rounding(team1Acc*100).toString());
+	console.log("Del: " + rounding(team1Del*100).toString());
+	console.log("Def: " + rounding(team1Def*100).toString());
+	console.log("Goa: " + rounding(team1Goa*100).toString());
+	console.log("Offensive Rating: " + rounding(team1OffRating).toString());
 	var team1DefRating = rounding((team1Def*.4 + team1Goa*.1)*100);
+	console.log("Defensive Rating: " + rounding(team1DefRating).toString());
+	console.log("OVERALL: " + rounding(team1OffRating+team1DefRating).toString());
 	// Team 2 Rating
 	var team2Acc = accuracy(team2);
 	var team2Del = delivery(team2);
 	var team2Def = defense(team2);
 	var team2Goa = goalie(team2);
+	console.log("===============================");
+	console.log("*** " + team2 + " ***");
+	console.log("Acc: " + rounding(team2Acc*100).toString());
+	console.log("Del: " + rounding(team2Del*100).toString());
+	console.log("Def: " + rounding(team2Def*100).toString());
+	console.log("Goa: " + rounding(team2Goa*100).toString());
 	var team2OffRating = rounding((team2Acc*.4 + team2Del*.1)*100);
+	console.log("Offensive Rating: " + rounding(team2OffRating).toString());
 	var team2DefRating = rounding((team2Def*.4 + team2Goa*.1)*100);
+	console.log("Defensive Rating: " + rounding(team2DefRating).toString());
+	console.log("OVERALL: " + rounding(team2OffRating+team2DefRating).toString());
 	// Comparison
 	var team1Wins = 0;
 	var team1Points = 0;
